@@ -1,0 +1,15 @@
+{
+    "conversations": [
+      {
+        "id": 1,
+        "question": "What is the capital of France?",
+        "response": "The capital of France is Paris."
+      },
+      {
+        "id": 2,
+        "question": "What is React?",
+        "response": "React is a JavaScript library for building user interfaces."
+      }
+    ]
+  }
+  

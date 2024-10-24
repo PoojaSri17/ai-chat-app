@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ChatPage from './views/ChatPage';
+import FeedbackPage from './views/FeedbackPage';
+import ConversationHistoryPage from './views/ConversationHistoryPage';
+import responses from './data/responses.json';
 
-function App() {
+const App = () => {
+  const [conversations, setConversations] = useState(responses.conversations);
+  const [feedbackData, setFeedbackData] = useState([]);
+
+  const handleSelectConversation = (conv) => {
+    // Load conversation logic
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<ChatPage />} />
+        <Route path="/feedback" element={<FeedbackPage feedbackData={feedbackData} />} />
+        <Route path="/history" element={<ConversationHistoryPage conversations={conversations} onSelect={handleSelectConversation} />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
